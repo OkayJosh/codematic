@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'drf_yasg',
     'film',
 ]
 
@@ -175,3 +176,8 @@ if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles/")
 
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+SWAGGER_SETTINGS = {
+    'DEFAULT_INFO': 'your_project_name.views.api_info',  # Replace 'your_project_name' with your actual project name
+}
