@@ -11,7 +11,8 @@ class Film(TimeStampedModel):
 
 class Comment(TimeStampedModel):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
-    text = models.CharField(max_length=255, blank=True, null=True)
+    # text length limited to 500 characters
+    text = models.CharField(max_length=500, blank=True, null=True)
     film = models.ForeignKey(
         'Film', on_delete=models.SET_NULL, related_name="film_comments", null=True, blank=True
     )
