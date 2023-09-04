@@ -68,7 +68,7 @@ To interact with the API, you can use tools like curl, Postman, or any HTTP clie
 2. Add a comment to a film:
 
     ```bash
-    curl -X POST -H "Content-Type: application/json" -d '{"text": "Great film!", "id": "aca1fc94-156e-4500-be4c-418be419cd0a"}' http://127.0.0.1:8000/comment_add/
+    curl -X POST -H "Content-Type: application/json" -d '{"text": "Great film form my view!", "film": "aca1fc94-156e-4500-be4c-418be419cd0a"}' http://127.0.0.1:8000/comment_add/
     
 3.  Get comments for a specific film (replace <film_id> with the actual film ID):
 
