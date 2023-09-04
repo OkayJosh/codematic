@@ -146,6 +146,6 @@ class FilmsViewSet(ViewSet):
             serializer = self.comment_serializer_class(data, many=True)
             return self.get_paginated_response(serializer.data)
 
-        serializer = self.film_serializer_class(data, many=True)
+        serializer = self.comment_serializer_class(data, many=True)
 
         return Response(serializer.data)
