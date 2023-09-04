@@ -15,7 +15,7 @@ def populate_with_swapi(*args, **kwargs):
         response = requests.get(SWAPI_FILMS)
         LOG.info(f'{SWAPI_FILMS} called with response {response.status_code}')
         response.raise_for_status()
-        if response.json()['count'] == Film.objects.count():
+        if response.json()['count'] >= Film.objects.count():
             return
         else:
             data = response.json()['results']
