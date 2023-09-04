@@ -1,0 +1,6 @@
+.pytest_cache
+.idea
+.env
+celerybeat-schedule
+trebelle.log
+db.sqlite3
