@@ -1,8 +1,11 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 
 from film.views import FilmsViewSet
 
+router = DefaultRouter()
+router.register(r'', FilmsViewSet, basename='films')
+
 urlpatterns = [
-    path("films/", FilmsViewSet.as_view({'get': 'films'}), name="films"),
-    path("comments/", FilmsViewSet.as_view({'get': 'comments', 'post': 'comment_add'}), name="comments"),
+    path('', include(router.urls)),
 ]
