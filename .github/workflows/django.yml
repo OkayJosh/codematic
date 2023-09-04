@@ -39,7 +39,7 @@ jobs:
         REDIS_URL: ${{ secrets.REDIS_URL }}
         CELERY_RESULT_BACKEND: ${{ secrets.CELERY_RESULT_BACKEND }}
         DATABASE_URL: ${{ secrets.DATABASE_URL }}
-        DJANGO_SETTINGS_MODULE: ${{ secrets.DATABASE_URL }}
+        DJANGO_SETTINGS_MODULE: ${{ secrets.DJANGO_SETTINGS_MODULE }}
       run: |
         python manage.py test
 
