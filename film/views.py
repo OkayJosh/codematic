@@ -132,3 +132,20 @@ class FilmsViewSet(ViewSet):
 
         comment.delete()
         return Response({'message': 'Comment deleted'}, status=status.HTTP_204_NO_CONTENT)
+
+    @action(detail=True, methods=['GET'])
+    def comments_for_film(self, request, pk=None):
+        try:
+            film = Film.objects.get(pk=pk)
+        except Film.DoesNotExist:
+            return Response({'message': 'Film not found'}, status=status.HTTP_404_NOT_FOUND)
+
+        data = Comment.objects.filter(film=film).order_by('created')
+        page = self.paginate_queryset(data)
+        if page is not None:
+            serializer = self.comment_serializer_class(data, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.film_serializer_class(data, many=True)
+
+        return Response(serializer.data)
