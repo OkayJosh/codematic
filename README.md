@@ -1,6 +1,6 @@
 # Star Wars Film API
 
-This project implements a RESTful API for retrieving information about Star Wars films and adding comments to them. The API uses data from the Star Wars API (SWAPI) and provides endpoints to get a list of films, add comments to films, and retrieve comments for a specific film. Additionally, it includes automated deployment to a cloud platform.
+This project implements a RESTful API([OPENAPI](https://codematicapi.onrender.com/docs/?format=openapi)) for retrieving information about Star Wars films and adding comments to them. The API uses data from the Star Wars API (SWAPI) and provides endpoints to get a list of films, add comments to films, and retrieve comments for a specific film. Additionally, it includes automated deployment to a cloud platform.
 
 ## Table of Contents
 
