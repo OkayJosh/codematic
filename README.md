@@ -11,7 +11,6 @@ This project implements a RESTful API for retrieving information about Star Wars
 - [Usage](#usage)
 - [Automated Deployment](#automated-deployment)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Introduction
 
@@ -73,7 +72,7 @@ To interact with the API, you can use tools like curl, Postman, or any HTTP clie
 3.  Get comments for a specific film (replace <film_id> with the actual film ID):
 
     ```bash
-    curl -X GET http://localhost:8000/api/comments/<film_id>/
+    curl -X GET http://127.0.0.1:8000/comments/<film_id>/
     
 4.  Automated Deployment
 This project is deployed to a Render using continuous deployment. You can access the live API [here](https://codematicapi.onrender.com/). For API documentation, visit [API Documentation](https://codematicapi.onrender.com/docs/).
