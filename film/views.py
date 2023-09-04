@@ -16,26 +16,39 @@ class FilmsViewSet(ViewSet):
     film_serializer_class = FilmsSerializer
     comment_serializer_class = CommentsSerializer
 
+    def __init__(self):
+        super().__init__()
+        self.description = None
+        self.name = None
+
     @action(methods=['GET'], detail=False, )
-    def films(self):
+    def films(self, request):
         """get list of films"""
         data = Film.objects.all().order_by('-release_date')
         serializer = self.film_serializer_class(data=data)
-        return Response(data=serializer.data)
+        if serializer.is_valid():
+            return Response(data=serializer.data)
+        return Response({"message": "Something went wrong"}, status=status.HTTP_400_BAD_REQUEST)
 
     @action(methods=['GET'], detail=False, )
-    def comments(self):
+    def comments(self, request):
+        self.name = "Comment"
+        self.description = "List of comments"
         """get list comments for a film"""
         data = Comment.objects.all().order_by('-created')
         serializer = self.comment_serializer_class(data=data)
-        return Response(data=serializer.data)
+        if serializer.is_valid():
+            return Response(data=serializer.data)
+        return Response({"message": "Something went wrong"}, status=status.HTTP_400_BAD_REQUEST)
 
     @action(methods=['POST'], detail=False, )
     def comment_add(self, request):
         """add a comment to a film"""
+        self.name = "Add Comment"
+        self.description = "Post comments"
         data = request.data
         serializer = self.comment_serializer_class(data=data)
-        if serializer.is_valid(raise_exception=False):
+        if serializer.is_valid():
             serializer.save()
         else:
             return Response({'message', 'comment not created'}, status=status.HTTP_400_BAD_REQUEST)
