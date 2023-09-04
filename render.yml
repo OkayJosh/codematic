@@ -21,7 +21,7 @@ services:
       - key: PYTHON_VERSION
         value: 3.10.5
   - type: redis
-    name: codematic-redis
+    name: thor-redis
     region: Frankfurt
     plan: starter # we choose a plan with persistence to ensure tasks are not lost upon restart
     maxmemoryPolicy: noeviction # recommended policy for queues
