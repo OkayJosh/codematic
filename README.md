@@ -56,6 +56,13 @@ To run this project locally, follow these steps:
     ```bash
      python manage.py runserver
 
+5. Start the celery beat:
+    ```bash
+     celery -A codematic beat -l INFO
+
+6. Start the celery worker:
+    ```bash
+     celery -A codematic worker -l INFO
 
 ## Usage 
 To interact with the API, you can use tools like curl, Postman, or any HTTP client. Below are some example requests:
