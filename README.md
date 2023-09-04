@@ -26,8 +26,9 @@ This project aims to demonstrate software development competence by creating a R
 ## API Endpoints
 
 - `GET /films/`: Get a list of films sorted by release date.
-- `POST /comments/`: Add a comment to a film.
-- `GET /comments/<film_id>/`: Get a list of comments for a specific film.
+- `POST /comment_add/`: Add a comment to a film.
+- `GET /<film_id>/comments_for_film/`: Get a list of comments for a specific film.
+- `GET /comments/`: Get a list of comments.
 
 For detailed API documentation, please visit the [API Documentation](https://codematicapi.onrender.com/docs/) section below.
 
@@ -67,12 +68,12 @@ To interact with the API, you can use tools like curl, Postman, or any HTTP clie
 2. Add a comment to a film:
 
     ```bash
-    curl -X POST -H "Content-Type: application/json" -d '{"text": "Great film!", "id": "aca1fc94-156e-4500-be4c-418be419cd0a"}' http://127.0.0.1:8000/comments/
+    curl -X POST -H "Content-Type: application/json" -d '{"text": "Great film!", "id": "aca1fc94-156e-4500-be4c-418be419cd0a"}' http://127.0.0.1:8000/comment_add/
     
 3.  Get comments for a specific film (replace <film_id> with the actual film ID):
 
     ```bash
-    curl -X GET http://127.0.0.1:8000/comments/<film_id>/
+    curl -X GET http://127.0.0.1:8000/<film_id>/comments_for_film/
     
 4.  Automated Deployment
 This project is deployed to a Render using continuous deployment. You can access the live API [here](https://codematicapi.onrender.com/). For API documentation, visit [API Documentation](https://codematicapi.onrender.com/docs/).
