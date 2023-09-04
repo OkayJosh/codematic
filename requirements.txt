@@ -3,9 +3,13 @@ Django==4.2.4
 django-extensions==3.2.3
 djangorestframework==3.14.0
 pytz==2023.3
-requests==2.5.0
 six==1.8.0
 sqlparse==0.4.4
 typing_extensions==4.7.1
-ujson==1.33
 uuid==1.30
+celery~=5.3.4
+dj-config-url~=0.1.1
+requests~=2.31.0
+pytest~=7.4.1
+python-decouple==3.8
+gunicorn==21.1.0
