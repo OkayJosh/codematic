@@ -6,6 +6,7 @@ from rest_framework.viewsets import ViewSet
 
 from film.models import Film, Comment
 from film.serializers import FilmsSerializer, CommentsSerializer
+from film.tasks import populate_with_swapi
 
 
 # class AccountViewsSet(ViewSet):
@@ -149,3 +150,16 @@ class FilmsViewSet(ViewSet):
         serializer = self.comment_serializer_class(data, many=True)
 
         return Response(serializer.data)
+
+    @action(methods=['POST'], detail=False, )
+    def swapi_callback(self, request):
+        """webhook to get updates"""
+        data = request.data
+
+        if data.get("event", None) == "update":
+            # run update on the database
+            populate_with_swapi.delay()
+            return Response({'message', 'update received'}, status=status.HTTP_200_OK)
+        else:
+            # ignore
+            return Response({'message', 'event received'}, status=status.HTTP_200_OK)
